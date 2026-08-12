@@ -1,7 +1,7 @@
 {
   "name": "skills",
   "version": "0.1.0",
-  "description": "Skills marketing pour agents — B2B SaaS & agence. Grilling, briefs, copy, recherche marché, CRO et plus. Basés sur le standard ouvert Agent Skills, multi-harnais.",
+  "description": "Skills pour Claude Code, Codex, OpenCode et Cursor.",
   "author": {
     "name": "Maxime Chauvise"
   },
@@ -9,11 +9,10 @@
   "repository": "https://github.com/maximechauvise/skills",
   "license": "MIT",
   "keywords": [
-    "marketing",
     "skills",
-    "copywriting",
-    "positionnement",
-    "cro",
+    "agent-skills",
+    "claude-code",
+    "codex",
     "agents"
   ],
   "skills": []

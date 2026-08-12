@@ -1,17 +1,15 @@
-# Docs
+# Documentation des skills
 
-Pages **humaines** des skills — le miroir des buckets promus (`strategy/`, `content/`, `growth/`, `productivity/`).
+Ce dossier contient une page destinée aux humains pour chaque skill promu. L’arborescence reprend le bucket et le nom du skill :
 
-Les pages ne sont pas distribuées : elles naissent avec un skill promu et suivent les conventions de [`.agents/writing-docs.md`](../.agents/writing-docs.md). L'arborescence reflète les buckets :
-
-```
-docs/
-  strategy/      ← pages des skills de skills/strategy/
-  content/       ← pages des skills de skills/content/
-  growth/        ← pages des skills de skills/growth/
-  productivity/  ← pages des skills de skills/productivity/
+```text
+docs/<bucket>/<name>.md
 ```
 
-## État
+Une page explique le rôle, l’usage et la place du skill dans le système. Elle ne recopie pas les instructions de `SKILL.md` et n’est pas distribuée avec le skill.
 
-Aucune page pour l'instant — la structure est prête.
+Les règles de rédaction se trouvent dans [`.agents/writing-docs.md`](../.agents/writing-docs.md).
+
+## État actuel
+
+Aucune page, car aucun skill n’est livré.

@@ -1,81 +1,75 @@
-# CLAUDE.md
+# Instructions du dépôt
 
-Ce dépôt regroupe des skills pour Claude Code, Cursor, Codex et OpenCode.
+Ce dépôt contient des skills compatibles avec Claude Code, Codex, OpenCode et Cursor.
 
-## Structure d’un skill
+## Rôle des fichiers
 
-Chaque skill est un dossier `skills/<bucket>/<name>/` :
+- `skills/<bucket>/<name>/SKILL.md` : instructions chargées par l’agent.
+- `skills/<bucket>/<name>/agents/openai.yaml` : nom, description courte et politique d’invocation pour Codex et ChatGPT.
+- `skills/<bucket>/<name>/{references,assets,scripts}/` : ressources facultatives du skill.
+- `docs/` : documentation destinée aux humains pour les skills promus.
+- `CONTEXT.md` : vocabulaire commun du dépôt.
+- `.agents/` : règles d’invocation, de documentation et d’installation.
+- `.claude-plugin/` : manifestes de distribution pour Claude Code.
 
-```
+## Format d’un skill
+
+Chaque skill vit dans `skills/<bucket>/<name>/` et contient au minimum :
+
+```text
 skills/<bucket>/<name>/
 ├── SKILL.md
-├── agents/
-│   └── openai.yaml
-├── references/       # facultatif
-├── assets/           # facultatif
-└── scripts/          # facultatif
+└── agents/
+    └── openai.yaml
 ```
 
-`SKILL.md` contient le skill, avec un frontmatter obligatoire. Son corps et sa `description` sont en français.
+Le corps et la `description` de `SKILL.md` sont en français :
 
 ```yaml
 ---
 name: nom-du-skill
-description: Description du déclenchement.
+description: Rôle du skill et conditions de déclenchement.
 ---
 ```
 
-`agents/openai.yaml` définit les métadonnées Codex et ChatGPT :
+`agents/openai.yaml` contient les métadonnées d’interface :
 
 ```yaml
 interface:
-  display_name: "nom-du-skill"
-  short_description: "Description du déclenchement."
-policy:
-  allow_implicit_invocation: false
+  display_name: "Nom lisible"
+  short_description: "Rôle du skill en une phrase courte."
+  default_prompt: "Utilise $nom-du-skill pour traiter cette demande."
 ```
 
-## Invocation et dépendances
+La description courte contient 25 à 64 caractères. Le prompt par défaut tient en une phrase et mentionne `$nom-du-skill`.
 
-L’invocation est indépendante du contenu. Consulter `.agents/invocation.md` pour le mapping par harnais.
-
-- **User-invoked** : déclenché par l’utilisateur, notamment pour les workflows et actions à effet de bord. Ajouter `disable-model-invocation: true` dans `SKILL.md` et `policy.allow_implicit_invocation: false` dans `agents/openai.yaml`. La description s’adresse à un humain.
-- **Model-invoked** : déclenchable par l’agent lorsque le contexte convient. N’ajouter aucune restriction d’invocation. La description doit préciser les situations de déclenchement pour un modèle.
-
-Un skill user-invoked peut appeler un skill model-invoked ; l’inverse est interdit. Écrire les dépendances en prose sous la forme `/nom-du-skill`, jamais comme des chemins relatifs.
+Consulter `.agents/invocation.md` avant d’ajouter une restriction d’invocation.
 
 ## Ajouter ou modifier un skill
 
-1. Créer `SKILL.md` et `agents/openai.yaml` avec une politique d’invocation cohérente.
-2. Ajouter le dossier au tableau `"skills"` de `.claude-plugin/plugin.json`.
-3. Mettre à jour `skills/<bucket>/README.md`, le `README.md` racine, `docs/<bucket>/<name>.md` et le `CHANGELOG.md`. Créer aussi un changset lorsque la pipeline sera en place.
-4. Créer un `README.md` d’index si le bucket n’en a pas. Buckets : `strategy`, `content`, `growth`, `productivity`, `misc`, `in-progress`, `deprecated`.
+1. Créer ou modifier `SKILL.md` et `agents/openai.yaml`.
+2. Vérifier que le nom du dossier, le champ `name` et les métadonnées correspondent.
+3. Ajouter tout skill distribué à `.claude-plugin/plugin.json`.
+4. Mettre à jour l’index du bucket, le `README.md` racine et `CHANGELOG.md`.
+5. Pour un skill promu, créer ou mettre à jour `docs/<bucket>/<name>.md` selon `.agents/writing-docs.md`.
+6. Vérifier l’invocation dans Claude Code, Codex, OpenCode et Cursor.
 
-Scripts utiles : `scripts/list-skills.sh` liste les `SKILL.md` du dépôt ; `scripts/sync-plugin-version.mjs` synchronise la version de `package.json` vers `.claude-plugin/plugin.json`.
+Créer le `README.md` d’un bucket lors de son ajout. Buckets autorisés : `strategy`, `content`, `growth`, `productivity`, `misc`, `in-progress` et `deprecated`.
 
-La version de `.claude-plugin/plugin.json` est gérée par ce dernier script, jamais à la main. Après toute modification de `package.json` ou `plugin.json`, vérifier la synchronisation :
+## Déplacer, déprécier ou retirer un skill
 
-```sh
-node scripts/sync-plugin-version.mjs --check
-```
+- Déplacer ou renommer : mettre à jour le dossier, le champ `name`, la page `docs/`, les index et le manifeste.
+- Déprécier : déplacer le skill dans `skills/deprecated/`, le retirer du manifeste et supprimer sa page `docs/`.
+- Retirer : supprimer son dossier déprécié et documenter la suppression dans `CHANGELOG.md`.
 
-## Retirer ou renommer un skill
+Indiquer le remplacement éventuel dans `CHANGELOG.md`.
 
-- **Retirer** : supprimer le dossier, son entrée dans `plugin.json`, sa page `docs/` et les références dans les README. Documenter dans le changset ce qui le remplace ou la raison de son retrait.
-- **Renommer** : déplacer le dossier ; le nom du dossier, le champ `name`, la page `docs/`, les README et `plugin.json` doivent suivre le nouveau nom.
+## Vérifications
 
-Ne jamais supprimer un dossier sans le documenter dans le changset.
+- `scripts/list-skills.sh` liste tous les `SKILL.md`.
+- `scripts/sync-plugin-version.mjs` copie la version de `package.json` dans `.claude-plugin/plugin.json`.
+- Après une modification de l’un de ces deux fichiers, lancer `node scripts/sync-plugin-version.mjs --check`.
+- Ne pas modifier directement la version du manifeste.
+- Éviter les commentaires et les fichiers sans rôle opérationnel.
 
-## Règles communes
-
-- Éviter les commentaires superflus dans les fichiers générés.
-- Après avoir modifié un skill, vérifier la cohérence de tous les sous-harnais : Claude, Codex, OpenCode et `.claude-plugin/plugin.json`.
-
-## Références utiles
-
-En cas de doute, lire dans cet ordre :
-
-1. `CONTEXT.md` — vocabulaire du domaine.
-2. `.agents/invocation.md` — invocation par harnais.
-3. `.agents/writing-docs.md` — rédaction des pages de documentation.
-4. `.agents/install-block.md` — bloc d’installation canonique.
+En cas de doute, lire dans cet ordre : `CONTEXT.md`, `.agents/invocation.md`, `.agents/writing-docs.md`, puis `.agents/install-block.md`.

@@ -1,6 +1,6 @@
 .DS_Store
-node_modules/
-.scratch/
-*.log
 .env
 .env.*
+*.log
+.scratch/
+node_modules/

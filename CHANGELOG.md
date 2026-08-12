@@ -1,11 +1,17 @@
 # Changelog
 
-Toutes les changements notables de `skills` sont documentés ici, par version.
+Ce fichier consigne les changements qui affectent l’usage, la structure ou la distribution du dépôt.
+
+## À paraître
+
+- Simplification de toute la documentation.
+- Clarification du rôle des fichiers, des buckets et des modes d’invocation.
+- Harmonisation des descriptions dans les manifestes.
+- Retrait des formulations promotionnelles et des projets de skills non livrés.
 
 ## 0.1.0 — 2026-08-12
 
-- **Structure du repo** : buckets de skills (`strategy/`, `content/`, `growth/`, `productivity/`, `misc/`, `in-progress/`, `deprecated/`), supposés vides à ce stade.
-- **Plugin Claude Code** : manifeste `.claude-plugin/plugin.json` et `marketplace.json` prêts à recevoir des skills.
-- **Gouvernance** : `.agents/` documente l'axe d'invocation (user-invoked vs model-invoked), la rédaction des pages `docs/` et le bloc d'installation canonique.
-- **Scripts** : `list-skills.sh` et `sync-plugin-version.mjs` (synchronisation `package.json` → `plugin.json`).
-- Aucun skill livré dans cette version.
+- Création des buckets et des règles de maintenance.
+- Ajout des manifestes du plugin Claude Code.
+- Ajout des scripts de liste et de synchronisation de version.
+- Aucun skill livré.

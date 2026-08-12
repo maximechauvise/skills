@@ -1,7 +1,9 @@
 # In-progress
 
-Skills en cours de création, pas encore promus. Ils ne sont ni distribués par le plugin, ni documentés.
+Ce bucket contient les skills en cours de construction. Ils ne sont ni distribués ni documentés dans `docs/`.
 
-## État
+Un skill quitte ce bucket seulement quand son contenu, ses métadonnées et ses vérifications sont prêts.
 
-Vide — la structure est prête.
+## État actuel
+
+Aucun skill en cours.

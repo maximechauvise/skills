@@ -1,7 +1,9 @@
 # Deprecated
 
-Skills retirés. Un skill retiré est supprimé, et le changset qui le retire nomme ce qui l'a remplacé.
+Ce bucket conserve temporairement les skills dépréciés. Ils ne sont ni distribués ni documentés dans `docs/`.
 
-## État
+Chaque dépréciation et chaque retrait indique son remplacement éventuel dans `CHANGELOG.md`.
 
-Vide.
+## État actuel
+
+Aucun skill déprécié.

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-REPO="$(cd "$(dirname "$0")/.." && pwd)"
+repo_dir="$(cd "$(dirname "$0")/.." && pwd)"
 
-cd "$REPO"
+cd "$repo_dir"
 find skills -name SKILL.md -not -path '*/node_modules/*' | sort

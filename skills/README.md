@@ -1,23 +1,25 @@
 # Skills
 
-Bibliothèque de skills marketing pour agents. Chaque skill est un dossier avec un `SKILL.md` au format Agent Skills ; les conventions d’ajout sont dans [`CLAUDE.md`](../CLAUDE.md).
+Ce dossier contient les skills. Chaque skill possède un `SKILL.md` et les métadonnées décrites dans [`AGENTS.md`](../AGENTS.md).
 
-## Organisation
+## Buckets
 
-Les skills sont regroupés dans les buckets disponibles :
+| Bucket | Rôle | Distribué | Page dans `docs/` |
+| --- | --- | --- | --- |
+| `strategy` | Décisions et cadrage | oui | oui |
+| `content` | Production et révision de contenu | oui | oui |
+| [`growth`](./growth/) | Expérimentation et amélioration mesurable | oui | oui |
+| [`productivity`](./productivity/) | Méthodes de travail transversales | oui | oui |
+| `misc` | Cas stables sans bucket dédié | oui | non |
+| [`in-progress`](./in-progress/) | Skills en cours de construction | non | non |
+| [`deprecated`](./deprecated/) | Skills conservés temporairement avant retrait | non | non |
 
-- [`growth/`](./growth/) — CRO, boucles de feedback sur conversions.
-- [`productivity/`](./productivity/) — primitifs réutilisables : grilling, handoff, wait-what.
-- [`in-progress/`](./in-progress/) — skills en cours, non encore promus.
-- [`deprecated/`](./deprecated/) — skills retirés ; le changelog indique leur remplacement.
+Créer le dossier et son `README.md` lors de l’ajout d’un bucket absent.
 
-## L'axe d'invocation
+## Invocation
 
-Chaque skill est user-invoked ou model-invoked. Voir [`.agents/invocation.md`](../.agents/invocation.md) pour le mapping par harnais :
-
-- **User-invoked** — lancé uniquement par l'humain (`/grill-me`, `/brief-client`). Marqué dans les deux harnais (`disable-model-invocation: true` + `policy.allow_implicit_invocation: false`).
-- **Model-invoked** — déclenchable par l'agent automatiquement (`/copy`, `/research-marché`). Description riche en déclencheurs.
+Les index de bucket séparent les skills user-invoked et model-invoked. Les règles sont définies dans [`.agents/invocation.md`](../.agents/invocation.md).
 
 ## État actuel
 
-Aucun skill n’est encore livré. Les README de bucket listent les skills prévus ; la structure est prête à les accueillir.
+Aucun skill n’est livré.

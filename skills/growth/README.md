@@ -1,11 +1,7 @@
 # Growth
 
-Skills de croissance et de performance — la validation par les données.
+Ce bucket contient les skills d’expérimentation dont le résultat se mesure avec un indicateur explicite.
 
-## Model-invoked
+## État actuel
 
-- **`/cro-loop`** *(prévu)* — Boucle de feedback sur les conversions : observer les données, formuler une hypothèse, lancer un test, mesurer, décider.
-
-## État
-
-Structure prête. Aucun skill livré pour l'instant — voir `CLAUDE.md` pour la checklist d'ajout.
+Aucun skill n’est livré.
