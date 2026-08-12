@@ -1,0 +1,21 @@
+{
+  "name": "maximechauvise",
+  "owner": {
+    "name": "Maxime Chauvise"
+  },
+  "description": "Skills marketing pour agents, distribués comme plugin Claude Code.",
+  "plugins": [
+    {
+      "name": "skills",
+      "source": "./",
+      "description": "Skills marketing pour agents — B2B SaaS & agence. Grilling, briefs, copy, recherche marché, CRO et plus. Multi-harnais.",
+      "category": "marketing",
+      "keywords": [
+        "marketing",
+        "skills",
+        "copywriting",
+        "cro"
+      ]
+    }
+  ]
+}
