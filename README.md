@@ -1,12 +1,17 @@
-# Skills — marketing pour agents
+# Skills
 
-Des skills marketing pour agents de code (Claude Code, Cursor, Codex, opencode) : positionnement, briefs, copy, recherche marché, CRO. **Basés sur le standard ouvert Agent Skills**, petits, composables, multi-harnais.
+Une bibliothèque de skills pour agents de code (Claude Code, Cursor, Codex, opencode), basée sur le standard ouvert Agent Skills. Petits, composables, multi-harnais.
 
-Ce repo est une **architecture prête à recevoir les skills** : structure, gouvernance et distribution sont en place — aucun skill n'est encore livré (l'état de chaque bucket est détaillé dans `skills/`).
+Ce repo est une architecture prête à recevoir les skills : structure, gouvernance et distribution sont en place — aucun skill n'est encore livré (l'état de chaque bucket est détaillé dans `skills/`).
 
 ## Installation
 
-Deux façons d'entrer, deux philosophies. **Le plugin Claude Code** installe l'ensemble comme un bundle géré. **skills.sh** copie des fichiers éditables dans ton repo. Choisis-en un. Formulation canonique : [`.agents/install-block.md`](./.agents/install-block.md)
+Deux options :
+
+- **Plugin Claude Code** : installe l'ensemble comme un bundle géré.
+- **skills.sh** : copie des fichiers éditables dans ton repo.
+
+Choisis-en un. Formulation canonique : [`.agents/install-block.md`](./.agents/install-block.md)
 
 ### Claude Code — le plugin
 
@@ -23,16 +28,16 @@ Chaque skill est invoqué `/skills:<nom>`.
 npx skills@latest add maximechauvise/skills
 ```
 
-Choisis les skills à prendre, et sur quels coding agents les installer. L'installeur te laisse choisir quels skills prendre.
+L'installeur te laisse choisir les skills à prendre et sur quels agents les installer.
 
-## Pourquoi ces skills existent
+## Comment ça marche
 
-L'idée (empruntée à `mattpocock/skills` et adaptée au marketing) : aligner avant de créer, partager un langage, boucler sur les données.
+L'idée : aligner avant de créer, partager un langage, boucler sur les données.
 
-- **L'agent n'a pas compris** → le *grilling* : un skill d'interview qui résout chaque branche du design avant de commencer.
-- **Trop verbeux, jargon incohérent** → le **langage partagé** : `CONTEXT.md` porte le vocabulaire du domaine (ICP, funnel, brief, ton de marque…).
-- **Le contenu ne convertit pas** → les **boucles de feedback** : le CRO, c'est du TDD pour le marketing.
-- **La bouillie** → la **discipline de message** : un petit nombre de messages profonds plutôt qu'un mur de contenus.
+- **L'agent n'a pas compris** → le *grilling* : un skill d'interview qui résout chaque point avant de commencer.
+- **Trop verbeux, jargon incohérent** → le **langage partagé** : `CONTEXT.md` porte le vocabulaire du domaine.
+- **Le contenu ne fonctionne pas** → les **boucles de feedback** : tester, mesurer, itérer.
+- **La bouillie** → la **discipline de message** : peu de messages profonds plutôt qu'un mur de contenus.
 
 ## Structure
 
