@@ -1,0 +1,24 @@
+name: Vérifications
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    name: Vérifier le dépôt
+    runs-on: ubuntu-latest
+    steps:
+      - name: Récupérer le dépôt
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Lister les skills
+        run: npm run list-skills
+
+      - name: Vérifier les versions du plugin
+        run: npm run check-plugin-version

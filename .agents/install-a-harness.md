@@ -7,14 +7,8 @@ Le dépôt propose deux modes d’installation. Choisir un seul mode pour évite
 Installer le plugin complet :
 
 ```text
-/plugin install maximechauvise/skills
-```
-
-Si le dépôt doit d’abord être ajouté comme marketplace :
-
-```text
 /plugin marketplace add maximechauvise/skills
-/plugin install skills
+/plugin install skills@maximechauvise
 ```
 
 Les skills installés sont disponibles sous `/skills:<nom>`.
@@ -24,7 +18,7 @@ Les skills installés sont disponibles sous `/skills:<nom>`.
 Installer les skills voulus :
 
 ```bash
-npx skills@latest add maximechauvise/skills
+npx skills add maximechauvise/skills
 ```
 
 L’installeur demande quels skills et quels agents cibler.

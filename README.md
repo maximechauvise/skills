@@ -1,23 +1,22 @@
 # Skills
 
-Dépôt de skills compatibles avec Claude Code, Codex, OpenCode et Cursor. Il définit leur format, leur invocation, leur documentation et leur distribution.
-
-Le dépôt ne contient encore aucun skill. Son état initial fournit uniquement la structure et les règles de maintenance.
+Dépôt de skills compatibles avec Claude Code, Codex, OpenCode et Cursor.
 
 ## Installation
 
-Choisir un seul mode. Les instructions de référence se trouvent dans [`.agents/install-block.md`](./.agents/install-block.md).
+Choisir un seul mode pour éviter les doublons. Voir [`.agents/install-a-harness.md`](./.agents/install-a-harness.md) pour les détails.
 
 ### Claude Code
 
 ```text
-/plugin install maximechauvise/skills
+/plugin marketplace add maximechauvise/skills
+/plugin install skills@maximechauvise
 ```
 
-### Codex et autres agents compatibles
+### Codex, OpenCode et Cursor
 
 ```bash
-npx skills@latest add maximechauvise/skills
+npx skills add maximechauvise/skills
 ```
 
 ## Structure
@@ -28,11 +27,15 @@ npx skills@latest add maximechauvise/skills
 | `docs/` | Pages humaines des skills promus |
 | `.agents/` | Règles communes du dépôt |
 | `.claude-plugin/` | Manifestes du plugin Claude Code |
-| `scripts/` | Vérifications et opérations répétables |
-| `CONTEXT.md` | Vocabulaire commun |
-| `AGENTS.md` et `CLAUDE.md` | Instructions pour les agents qui modifient le dépôt |
+| `scripts/` | Opérations de maintenance |
+| `.github/` | Contrôles automatiques |
+| `SYSTEM.md` | Organisation et relations du système |
+| `CONTEXT.md` | Contexte utilisateur |
+| `CLAUDE.md` | Instructions de travail des agents |
+| `AGENTS.md` | Symlink vers `CLAUDE.md` |
+| `CHANGELOG.md` | Historique des changements |
 
-Pour ajouter ou modifier un skill, suivre [`AGENTS.md`](./AGENTS.md). L’état des versions est consigné dans [`CHANGELOG.md`](./CHANGELOG.md).
+Pour ajouter ou modifier un skill, suivre [`AGENTS.md`](./AGENTS.md).
 
 ## Licence
 
